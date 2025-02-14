@@ -1,0 +1,47 @@
+.detailPage{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.goBack{
+    text-decoration: none;
+    font-size: 24px;
+    color: red;
+    margin-left: 20px;
+}
+
+
+.title{
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.poster{
+    border-radius: 10px;
+    margin-left: 30px;
+}
+
+.text{
+    font-size: 20px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.navList{
+    margin: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+.detailLink{
+    font-size: 30px;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}

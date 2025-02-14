@@ -1,0 +1,9 @@
+.moviesPage{
+    background-color: rgb(16, 7, 42);
+
+}
+.searchMoviesTitle{
+    color: aliceblue;
+    font-weight: 100;
+   margin-left: 80px;
+}

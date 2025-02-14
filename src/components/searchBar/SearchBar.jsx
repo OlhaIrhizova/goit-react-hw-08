@@ -16,22 +16,22 @@ const handleSubmit = ((event)=>{
 })
 
 return(
-    <header className={css.header}>
+    
     <form onSubmit={handleSubmit} className={css.form}>
     <input
       type="text"
       autoComplete="off"
       autoFocus
-      placeholder="Search images and photos"
+      placeholder="Search movies"
       value={value}
       onChange={(e) => setValue(e.target.value)}
      className={css.formImput}
     />
     <button type="submit" className={css.searchBtn}>Search</button>
     </form>
-    </header>
+  
 
-         )
+    )
      }
      
      export default SearchBar;      

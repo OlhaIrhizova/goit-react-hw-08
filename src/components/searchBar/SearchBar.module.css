@@ -1,11 +1,4 @@
-.header{
-display: flex;
-justify-content: center;
-align-items: center;
-padding: 20px;
-background-color: #010000;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+
 
 .form{
 display: flex;
@@ -13,12 +6,13 @@ align-items: center;
 gap: 10px;
 width: 100%;
 max-width: 600px;
+margin-left: 50px;
 }
 
 .formImput{
   padding: 12px 20px;
   font-size: 16px;
-  border: 2px solid #ebad49;
+  border: 2px solid #ee1515;
   border-radius: 10px;
   outline: none;
   width: 100%;
@@ -26,14 +20,14 @@ max-width: 600px;
 }
 
 .formImput:focus{
-border-color: #d4740d;
+border-color: #ef6f68;
 box-shadow: 0 0 8px rgba(212, 116, 13, 0.5);
 }
 
 .searchBtn{
     padding: 12px 20px;
   font-size: 16px;
-  background-color: #ebad49;
+  background-color: #e31010;
   color: white;
   border: none;
   border-radius: 30px;
@@ -42,7 +36,7 @@ box-shadow: 0 0 8px rgba(212, 116, 13, 0.5);
 }
 
 .searchBtn:hover{
-    background-color: #d4740d;
+    background-color: #f14e4e;
     transform: scale(1.05);
 }
 

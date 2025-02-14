@@ -1,82 +1,40 @@
-import { useEffect, useState,  } from "react";
-import SearchBar from "./components/searchBar/SearchBar";
-import { fetchImages } from "./services/api";
-import ImageGallery from "./components/imageGallery/ImageGallery";
-import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreBtn";
-import ImageModal from "./components/imageModal/ImageModal";
-import Modal from 'react-modal';
-import ErrorMessage from "./components/errorMessage/ErrorMessage";
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/header/Header";
 import Loader from "./components/loader/Loader";
 
-
-Modal.setAppElement("#root");
+const HomePage = lazy(() => import("./pages/homePage/HomePage"));
+const MoviesPage = lazy(() => import("./pages/moviesPage/MoviesPage"));
+const MovieDetailsPage = lazy(() => import("./pages/movieDetailsPage/MovieDetailsPage"));
+const MovieCast  = lazy(() => import("./components/movieCast/MovieCast"));
+const MovieReviews = lazy(() => import("./components/movieReviews/MovieReviews"));
+const NotFoundPage = lazy(() => import("./pages/notFoundPage/NotFoundPage"));
+import css from "./App.module.css";
 
 
 
 const App = () => {
-  const [images, setImages] = useState([]);
-  const [query, setQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
- 
   
-  
- useEffect(() => {
-
-  if (!query) return;
-  
-  const getData = async () => {
-  
-  try {
-  setIsLoading(true);
-  setIsError(false);
-  const {results} = await fetchImages(query, page);
-  setImages(prev => [...prev, ...results]);
-
-  }catch{
-    setIsError(true);
-  }
-
-  finally {
-    setIsLoading(false)
-  };
-  
-  }
-  getData()
-  },[query,page]);
-
-  const handleSearch = (newQuery) => {
-    setQuery(newQuery);
-    setImages([]); 
-    setPage(1);
-  };
-
-  const openModal = (image) => {
-    setSelectedImage(image)
-    setIsModalOpen(true)
-  };
-  const closeModal = () => {
-    setIsModalOpen(false)
-    setSelectedImage(null);
-  };
-    
-
-  return (
-    <div>
-      <SearchBar onSubmit={handleSearch}/>
-      {isLoading && images.length === 0 && <Loader />}
-      {isError && <ErrorMessage/>}
-      <ImageGallery images={images} isLoading={isLoading} isError={isError} onImageClick={openModal}/>
-      {images.length > 0 && !isError && (
-  isLoading ? <Loader /> : <LoadMoreBtn onClick={() => setPage(prev => prev + 1)} />)}
-      <ImageModal isOpen ={isModalOpen} onClose={closeModal} image={selectedImage}/>
-     
-    </div>
+return (
+  <div className={css.container}>
+    <Header/>
+    <Suspense fallback={<Loader />}>
+    <Routes>
+    <Route path="/" element={<HomePage />} />
+    <Route path="/movies" element={<MoviesPage/>} />
+    <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+      <Route path="cast" element = {<MovieCast/>} />
+      <Route path="reviews" element = {<MovieReviews/>} />
+    </Route>
+    <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+    </Suspense>
+  </div>
   )
 
 }
+
+
+
 
 export default App;

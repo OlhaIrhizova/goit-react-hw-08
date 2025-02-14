@@ -1,0 +1,21 @@
+.header{
+    background-color: rgb(16, 7, 42);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    box-shadow: inset 0px -4px 10px rgba(255, 255, 255, 0.2),
+    inset 0px 4px 10px rgba(0, 0, 0, 0.5);
+  
+}
+
+.headerTitle{
+    color: white;
+    margin-left: 30px;
+    
+   
+}
+.spanTitle{
+    color: red;
+   
+}

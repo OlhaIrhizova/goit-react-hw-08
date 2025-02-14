@@ -1,0 +1,50 @@
+.movieList {
+    padding: 20px;
+    background-color: rgb(16, 7, 42);
+    
+  }
+  
+  .movieGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .movieItem {
+    background-color: #131334;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .movieItem:hover {
+    transform: scale(1.05);
+  }
+  
+  .movieLink {
+    display: block;
+    text-align: center;
+  }
+  .link{
+    text-decoration: none;
+  }
+  
+  .movieImg {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .movieTitle {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ebe6e6;
+    text-align: center;
+  }
+  .listText{
+    color: aliceblue;
+    font-size: 20px;
+    margin-left: 30px;
+  }
