@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MovieList from "../../components/movieList/MovieList";
 import { searchMovies } from "../../services/api";
 import { useSearchParams } from "react-router-dom";
@@ -10,17 +10,22 @@ const [movies, setMovies] = useState([]);
 const [searchParams, setSearchParams] = useSearchParams();
 
 const query = searchParams.get('query') || '';
-  
 
-  const handleSearch = async (value) => {
-  setSearchParams({ query: value });
-    if (query) {  
-      const results = await searchMovies(value);
+useEffect (()=> {
+  if (!query) return; 
+
+  const fetchMovies = async () => {
+
+      const results = await searchMovies(query);
       setMovies(results);
-    }
-        ;
-      
   };
+
+  fetchMovies ();
+
+},[query])
+
+const handleSearch = async (value) => {
+  setSearchParams({ query: value })};
 
 
     return (
