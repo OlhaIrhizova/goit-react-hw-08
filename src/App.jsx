@@ -1,30 +1,59 @@
 
-import ContactList from "./components/contactList/ContactList";
-import SearchBox from "./components/searchBox/SearchBox";
-import ContactForm from "./components/contactForm/ContactForm";
-import css from "./App.module.css";
-import { useDispatch } from "react-redux";
+
+
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchContacts } from "./redux/contactsOps";
+import { fetchContacts } from "./redux/contacts/operations";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/home/Home";
+import NotFound from "./pages/notFound/NotFound";
+import Register from "./pages/register/Register";
+import Login from "./pages/login/Login";
+import Contacts from "./pages/contacts/Contacts";
+import Layout from "./Layout";
+import { selectIsRefreshing } from "./redux/auth/selectors";
+import RestrictedRoute from "./RestrictedRoute";
+import PrivateRoute from "./PrivateRoute";
+import { refreshUser } from "./redux/auth/operations";
+
 
 
 function App() {
 const dispatch = useDispatch();
+const isRefreshing = useSelector(selectIsRefreshing);
 
 useEffect(() => {
- dispatch(fetchContacts())
-},[dispatch])
+  dispatch(refreshUser());
+}, [dispatch]);
+
+useEffect(() => {
+  if (!isRefreshing) {
+    dispatch(fetchContacts());
+  }
+}, [dispatch, isRefreshing]);
 
 
 
-  return(
-    <div className={css.container}>
-    <h1>Phonebook</h1>
-    <ContactForm />
-    <SearchBox />
-    <ContactList />
+
+  return isRefreshing ?(
+   <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element = {<Layout/>}>
+      <Route path="/" element = {<Home/>}/>
+      <Route path="/register" element = {
+        <RestrictedRoute redirectTo="/contacts" element={<Register/>}/>}/>
+        <Route path="/login" element = {
+        <RestrictedRoute redirectTo="/contacts" element={<Login/>}/>}/>
+      <Route path="/contacts" element ={
+        <PrivateRoute redirectTo="/login" element={<Contacts/>} />}/>
+     
+      <Route path="*" element = {<NotFound/>}/>
+      </Route>
+    </Routes>
     
-    </div>
+    
+
   )
 
 }

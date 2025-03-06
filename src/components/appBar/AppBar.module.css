@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 700px; /* Також обмежуємо ширину хедера */
+    margin: 0 auto;
+    padding: 1rem;
+    background: linear-gradient(to bottom, #1d4ed8, #3b82f6);
+    color: white;
+    border-radius: 8px;
+    
+  }
+  
+  .headerTitle{
+    font-size: 30px;
+    font-weight:lighter;
+  }
+  .welcomeTitle{
+    font-size: 16px;
+    font-weight: normal;
+  }
+  

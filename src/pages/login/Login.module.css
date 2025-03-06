@@ -1,0 +1,92 @@
+.loginContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(to bottom, #5695f9, #1d4ed8);
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        max-width: 700px;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+    
+    .formWrapper {
+        margin: 20px auto;
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
+    
+    .contactForm {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .label {
+        font-size: 16px;
+        font-weight: 500;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .input {
+        padding: 10px;
+        padding-right: 35px; /* Залишаємо місце для іконки */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 100%;
+    }
+    
+    .formBtn {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        background-color: #4a90e2;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .formBtn:hover,
+    .formBtn:focus,
+    .formBtn:active {
+        background-color: rgb(34, 103, 241);
+    }
+    
+    .error {
+        color: red;
+    }
+    
+    .passwordWrapper {
+        position: relative;
+        display: flex;
+        align-items: center; /* Центруємо іконку з інпутом по вертикалі */
+    }
+    
+    .passwordToggle {
+        position: absolute;
+        right: 10px;
+        background: none;
+        border: none;
+        color: #007BFF;
+        cursor: pointer;
+        font-size: 20px; /* Розмір іконки */
+    }
+    
+    .passwordToggle:hover {
+        text-decoration: underline;
+    }
+    

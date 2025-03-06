@@ -1,0 +1,15 @@
+.registerContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; 
+    background: linear-gradient(to bottom, #5695f9, #1d4ed8);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    max-width: 700px; 
+    margin: 0 auto; 
+    border-radius: 8px; 
+  
+}

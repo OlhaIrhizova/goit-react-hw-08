@@ -8,7 +8,7 @@
     margin-bottom: 10px; /* Відступ між контактами */
     background-color: #f9f9f9; /* Фон */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    min-width: 300px;
+    min-width: 400px;
     flex-basis: calc((100% - 24px* 2) / 3);
     }
 

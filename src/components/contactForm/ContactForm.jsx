@@ -1,12 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import css from "./ContactForm.module.css";
 import * as Yup from "yup";
-import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-
 import toast from "react-hot-toast";
-import { addContact } from "../../redux/contactsOps";
-import { selectContacts } from "../../redux/contactsSlice";
+import { selectContacts } from "../../redux/contacts/selectors";
+import { addContact } from "../../redux/contacts/operations";
+
 
 
 
@@ -34,10 +33,10 @@ const ContactForm = () => {
         const isContactExists = contacts.some(contact => contact.number === values.number);
         
         if (isContactExists) {
-            toast.error("This contact already exists!");
+            toast.error("This number already exists!");
+            return 
         }else {
         const newObj = {
-            id:nanoid(),
             name: values.name,
             number: values.number
         };
