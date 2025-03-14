@@ -21,17 +21,20 @@ const buildLinkClass = ({ isActive }) => {
       return (
           <nav className={css.nav}>
           <NavLink className = {buildLinkClass}to='/'> Home</NavLink>
-          <NavLink className = {buildLinkClass}to='/contacts'> Contacts</NavLink>
+       
           
-         {!isLoggedIn && (
-          <>
+         {isLoggedIn && (
+          
+           <NavLink className = {buildLinkClass}to='/contacts'> Contacts</NavLink>
+         )}
+           {!isLoggedIn ? (
+            <>
            <NavLink className = {buildLinkClass}to='/register'> Register</NavLink>
            <NavLink className = {buildLinkClass}to='/login'> Login</NavLink>
-          </>
-         
-         )}
-          {isLoggedIn && <button className={css.button} onClick={() => dispatch(logoutThunk())}>Logout</button>}
+           </> ) : (
+          <button className={css.button} onClick={() => dispatch(logoutThunk())}>Logout</button>
+           )}
         </nav>
-      )
-  }
+      );
+  };
   export default Navigation;
